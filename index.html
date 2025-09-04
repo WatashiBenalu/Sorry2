@@ -1,0 +1,184 @@
+<html>
+<meta charset='UTF-8' />
+<meta content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5'
+  name='viewport' />
+<meta content='IE=edge' http-equiv='X-UA-Compatible' />
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+<script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+<link href="https://htmlku.com/akuakan/play/style.css" rel="stylesheet" type="text/css" />
+
+<head>
+  <title>Kasih aku kesempatan</title>
+  <link rel="icon" type="image/svg+xml" href="https://feeldreams.github.io/main-icon.png">
+  <link rel="apple-touch-icon" href="https://feeldreams.github.io/main-icon.png">
+</head>
+
+<body>
+
+  <div id="bodyblur">
+    <img src="https://raw.githubusercontent.com/WatashiBenalu/data/refs/heads/main/BG.png" id="wallpaper" />
+  </div>
+
+  <div class="kumpulanstiker">
+    <img src="https://feeldreams.github.io/pusn.gif" id="stiker1" />
+    <img src="https://feeldreams.github.io/wortel.gif" id="stiker2" />
+    <img src="https://feeldreams.github.io/mndkat.gif" id="stiker3" />
+    <img src="https://feeldreams.github.io/ngumpet.gif" id="stiker4" />
+
+    <div id='Content'>
+      <div id="suratin" onClick="memulai();audio.play();">
+        <img src="https://rayyscoding.github.io/envelope.png" />
+      </div>
+      <p id="ket">Klik Suratnya!</p>
+
+      <div>
+        <img src="https://feeldreams.github.io/pandapukpuk.gif" id="fotoakhir" />
+        <img src="https://feeldreams.github.io/gumush.gif" id="fotoakhir2" />
+      </div>
+      <div>
+        <blockquote id='bq'>
+          <p id="kalimat"></p>
+          <p id="kalimatc"></p>
+          <div id="Tombol" style="opacity:0; transform:scale(0); margin:20px auto 0 auto; width:fit-content;">
+            <a onClick="sjawab()" style="padding:8px 20px; background:#fff; border-radius:8px; 
+                      text-decoration:none; font-weight:bold; color:#000; 
+                      box-shadow:0 2px 6px rgba(0,0,0,.2); display:inline-block;">
+              💌 Balas
+            </a>
+          </div>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script utama -->
+  <script type="text/javascript">
+    function showDiv() {
+      Content.style = "opacity:1;margin-top:15vh;";
+      ket.style = "margin-top:30px";
+    }
+
+    function memulai() {
+      suratin.style = "transition:all 1s ease;transform:scale(.1);opacity:0";
+      ket.style = "transition:all 1s ease;transform:scale(0);opacity:0";
+      setTimeout(pesan, 3300);
+    }
+
+    function kpemb() {
+      suratin.style = "display:none";
+      ket.style = "display:none";
+      fotoakhir.style = "display:inline-flex;transform:scale(1);";
+      Content.style = "opacity:1;margin-top:2vh;";
+      bq.style = "opacity:1;visibility:visible;margin-top:5px";
+      bodyblur.style = "opacity:.5";
+      setTimeout(ngetik, 150);
+    }
+
+    // ================= Efek Jatuhan Hati =================
+    function berjatuhan() {
+      const heart = document.createElement("div");
+      heart.innerHTML = "<svg class='line spin' style='opacity:.5;z-index:100' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><g transform='translate(2.550170, 3.550158)'><path d='M0.371729633,8.89614246 C-0.701270367,5.54614246 0.553729633,1.38114246 4.07072963,0.249142462 C5.92072963,-0.347857538 8.20372963,0.150142462 9.50072963,1.93914246 C10.7237296,0.0841424625 13.0727296,-0.343857538 14.9207296,0.249142462 C18.4367296,1.38114246 19.6987296,5.54614246 18.6267296,8.89614246 C16.9567296,14.2061425 11.1297296,16.9721425 9.50072963,16.9721425 C7.87272963,16.9721425 2.09772963,14.2681425 0.371729633,8.89614246 Z'></path><path d='M13.23843,4.013842 C14.44543,4.137842 15.20043,5.094842 15.15543,6.435842'></path></g></svg>";
+      heart.className = "heart-icon";
+      heart.style.left = (Math.random() * 95) + "vw";
+      heart.style.animationDuration = (Math.random() * 3) + 2 + "s";
+      document.body.appendChild(heart);
+    }
+
+    setInterval(function () {
+      var heartArr = document.querySelectorAll(".heart-icon");
+      if (heartArr.length > 100) {
+        heartArr[0].remove();
+      }
+    }, 100);
+
+    // ================= SweetAlert & Tombol =================
+    function tombol() {
+      Tombol.style.opacity = "1";
+      Tombol.style.transform = "scale(1)";
+      Tombol.style.marginTop = "20px";
+      ftom = 1;
+    }
+
+    const swals = Swal.mixin({allowOutsideClick: false, cancelButtonColor: '#FF0040', imageWidth: 90, imageHeight: 100});
+    const swalst = Swal.mixin({allowOutsideClick: false, showConfirmButton: false, timer: 2600, timerProgressBar: true, imageWidth: 90, imageHeight: 90});
+
+    function setel() {audio.play();}
+    function sjawab() {if (ftom == 1) {Tombol.style = "display:none"; jawab();} }
+
+    // ================= Efek Ngetik =================
+    var katangetik;
+    function ngetik() {
+      new TypeIt("#kalimat", {
+        strings: ["" + katangetik], startDelay: 50, speed: 42, cursor: true,
+        afterComplete: function () {
+          kalimat.innerHTML = katangetik;
+          kalimatc.style = "margin-top:20px;margin-bottom:10px";
+          setTimeout(ngetik2, 300);
+        },
+      }).go();
+    }
+
+    var katangetik2;
+    function ngetik2() {
+      new TypeIt("#kalimatc", {
+        strings: ["" + katangetik2], startDelay: 50, speed: 35, cursor: true,
+        afterComplete: function () {
+          kalimatc.innerHTML = katangetik2;
+          fotoakhir.style.transform = "scale(0)";
+          setTimeout(function () {
+            fotoakhir.src = fotoakhir2.src;
+            fotoakhir.style.transform = "scale(1)";
+          }, 300);
+          setInterval(berjatuhan, 200);
+          setTimeout(tombol, 300); // tombol muncul otomatis setelah teks selesai
+        },
+      }).go();
+    }
+
+    // ================= Jawab =================
+    // Pesan WhatsApp
+    var nomor = "6281977195444"; // ganti dengan nomor tujuan
+    var pesanwhatsapp = "Hai, aku sudah baca suratmu. aku maafin kamu🥰"; // isi pesan default
+    async function jawab() {
+      await swals.fire('Hubungin aku ya<br>kumohon! 😭');
+      window.location = "https://api.whatsapp.com/send?phone=" + nomor + "&text=" + encodeURIComponent(pesanwhatsapp);
+    }
+
+    // ================= Script Awal =================
+    async function pertama() {
+      audio = new Audio('https://audio.jukehost.co.uk/5VfcVfr1D3fIU8m27X85m5HVkPyRIhQr');
+      showDiv();
+    }
+    pertama();
+
+    async function pesan() {
+      await swalst.fire({
+        title: 'Hi! aku panggil<br>Shylea atau Tyas ya? 🥰',
+        imageUrl: '' + stiker1.src,
+      });
+
+      await swalst.fire({
+        title: 'Udahan atuh ngambeknya 🥺',
+        imageUrl: '' + stiker2.src,
+      });
+
+      await swalst.fire({
+        title: 'Jangan menjauh dariku 😖',
+        imageUrl: '' + stiker3.src,
+      });
+
+      await swalst.fire({
+        title: 'Kasih aku kesempatan 😭',
+        imageUrl: '' + stiker4.src,
+      });
+
+      katangetik = "<div style='text-align:justify;'>Maafin aku,</b> kalau aku masih banyak salah dan belum bisa ngerti sepenuhnya apa yang kamu inginkan.<br><br>Aku punya banyak kekurangan, tapi karena kamu aku selalu belajar untuk terus memperbaiki diri. Karena kamu, aku tumbuh, dan aku juga berharap kamu merasakan hal yang sama.<br><br>Jadi, berikan aku kesempatan,agar aku bisa jadi versi terbaik bersamamu. 💕</div>";
+      katangetik2 = "<i>Orang paling istimewaku</i><br><b class='merah fontalt'>💖Shylea / Tyas💖</b>";
+
+      setTimeout(kpemb, 200);
+    }
+  </script>
+</body>
+
+</html>
