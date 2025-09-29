@@ -10,8 +10,9 @@
 
 <head>
   <title>Kasih aku kesempatan</title>
-  <link rel="icon" type="image/svg+xml" href="https://feeldreams.github.io/main-icon.png">
-  <link rel="apple-touch-icon" href="https://feeldreams.github.io/main-icon.png">
+  <link rel="icon" type="image/svg+xml"
+    href="https://raw.githubusercontent.com/WatashiBenalu/data/refs/heads/main/Icons.jpeg">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/WatashiBenalu/data/refs/heads/main/Icons.jpeg">
   <style>
     .ti-cursor {
       display: inline-block;
@@ -145,9 +146,9 @@
     // ================= Jawab =================
     // Pesan WhatsApp
     var nomor = "6281977195444"; // ganti dengan nomor tujuan
-    var pesanwhatsapp = "Hai, aku sudah baca suratmu. aku maafin kamu🥰"; // isi pesan default
+    var pesanwhatsapp = "Aku sudah baca pesanmu. kita baikan 😇"; // isi pesan default
     async function jawab() {
-      await swals.fire('Hubungin aku ya<br>kumohon! 😭');
+      await swals.fire('Kita baikan ya<br>kumohon! 😭');
       window.location = "https://api.whatsapp.com/send?phone=" + nomor + "&text=" + encodeURIComponent(pesanwhatsapp);
     }
 
