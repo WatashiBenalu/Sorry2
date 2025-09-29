@@ -148,7 +148,7 @@
     var nomor = "6281977195444"; // ganti dengan nomor tujuan
     var pesanwhatsapp = "Aku sudah baca pesanmu. kita baikan 😇"; // isi pesan default
     async function jawab() {
-      await swals.fire('Kita baikan ya<br>kumohon! 😭');
+      await swals.fire('Kita baikan ya,<br>kumohon maafin aku! 😭');
       window.location = "https://api.whatsapp.com/send?phone=" + nomor + "&text=" + encodeURIComponent(pesanwhatsapp);
     }
 
